@@ -1,4 +1,4 @@
-# Setup a wireless access point
+# Setup a Wireless Access Point
 Open up the terminal in Pi and type the following commands:
 ```
 sudo apt-get update
@@ -54,7 +54,7 @@ Find #DAEMON_CONF,remove the line and paste the following command:
 ```
 DAEMON_CONF="/etc/hostapd/hostapd.conf"
 ```
-# Enable the wireless access point
+# Enable the Wireless Access Point
 ```
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
