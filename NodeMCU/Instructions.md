@@ -23,4 +23,6 @@ Download the following libraries:
 ###### 3)PubSubClient
 
 # Setup Details
-
+1) Connect VCC of DHT11 to Vin of NodeMCU
+2) Connect DATA of DHT11 to D5 of NodeMCU
+3) Connect GND of DHT11 to GND of NodeMCU
