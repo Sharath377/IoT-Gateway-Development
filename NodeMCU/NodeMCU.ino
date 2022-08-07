@@ -5,7 +5,8 @@
 #include "DHT.h"
 #define DHTTYPE DHT11  
 DynamicJsonDocument doc(1024);
-const char* ssid = "YOUR SSID NAME";
+//In this case SSID and password will be the Raspberry Pi Access Point
+const char* ssid = "YOUR SSID NAME"; 
 const char* password = "YOUR SSID PASSWORD";
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
@@ -63,7 +64,7 @@ void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
-    
+    //For multiple clients use different names
     if (client.connect("ESP8266Client3")) {
       Serial.println("connected");  
       client.subscribe("esp8266/4");
@@ -114,12 +115,13 @@ void loop() {
       Serial.println("Failed to read from DHT sensor!");
       return;
     }
+    //Store NodeID,temperature and humidity in Json format 
  doc["ID"]=WiFi.macAddress();
    doc["temp"]=t;
   doc["humidity"]=h;
   char buffer[256];
    serializeJson(doc,buffer);
-    
+    //Publish the data
     client.publish("/esp8266/update",buffer);
     
     Serial.print("Humidity: ");
