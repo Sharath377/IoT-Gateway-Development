@@ -26,7 +26,6 @@ DHT dht(DHTPin, DHTTYPE);
 long now = millis();
 long lastMeasure = 0;
 
-
 void setup_wifi() {
   delay(10);
   // We start by connecting to a WiFi network
@@ -37,14 +36,14 @@ void setup_wifi() {
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
-  }
+    }
   Serial.println("");
   Serial.print("WiFi connected - ESP IP address: ");
   Serial.println(WiFi.localIP());
-}
+  }
 
 
-void callback(String topic, byte* message, unsigned int length) {
+void callback(String topic, byte* message, unsigned int length){
   Serial.print("Message arrived on topic: ");
   Serial.print(topic);
   Serial.print(". Message: ");
@@ -53,12 +52,11 @@ void callback(String topic, byte* message, unsigned int length) {
   for (int i = 0; i < length; i++) {
     Serial.print((char)message[i]);
     messageTemp += (char)message[i];
+    }
+  Serial.println();
+  Serial.println();
   }
-  Serial.println();
 
-  
-  Serial.println();
-}
 
 void reconnect() {
   // Loop until we're reconnected
@@ -69,17 +67,19 @@ void reconnect() {
       Serial.println("connected");  
       client.subscribe("esp8266/4");
       client.subscribe("esp8266/5");
-    } else {
+      } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
       Serial.println(" try again in 5 seconds");
       delay(15000);
+      }
     }
   }
-}
+
+
 char* toCharArrays(String str){
   return &str[0];
-}
+  }
 
 
 void setup() {
@@ -89,14 +89,14 @@ void setup() {
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
-}
+  }
+
 
 void loop() {
   if (!client.connected()) {
     reconnect();
-  }
+    }
   if(!client.loop())
-
     client.connect("ESP8266Client3");
     
   now = millis();
@@ -114,13 +114,13 @@ void loop() {
     if (isnan(h) || isnan(t) || isnan(f)) {
       Serial.println("Failed to read from DHT sensor!");
       return;
-    }
+      }
     //Store NodeID,temperature and humidity in Json format 
- doc["ID"]=WiFi.macAddress();
-   doc["temp"]=t;
-  doc["humidity"]=h;
-  char buffer[256];
-   serializeJson(doc,buffer);
+    doc["ID"]=WiFi.macAddress();
+    doc["temp"]=t;
+    doc["humidity"]=h;
+    char buffer[256];
+    serializeJson(doc,buffer);
     //Publish the data
     client.publish("/esp8266/update",buffer);
     
@@ -130,5 +130,5 @@ void loop() {
     Serial.print(t);
     Serial.print(" *C ");
      Serial.println("");
+    }
   }
-}
