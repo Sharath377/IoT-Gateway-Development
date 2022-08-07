@@ -1,9 +1,9 @@
 Converting Pi to an wireless Access Point makes it act like a router. Follow the given steps :
 1) Open up the terminal in Pi and type the following commands:
-'''
+```
 function test() {
   console.log("notice the blank line before this function?");
 }
-'''
+```
 
 
