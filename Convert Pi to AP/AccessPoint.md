@@ -132,4 +132,4 @@ systemctl status dnsmasq
 sudo reboot
 ```
 
-### Now your Pi will be working as a AccessPoint/wireless router to which devices can connect to
+### Now your Pi will be working as AccessPoint/Wireless Router to which devices can connect to and access Internet.
