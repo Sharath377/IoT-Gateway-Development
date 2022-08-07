@@ -19,15 +19,15 @@ else:
     ssl._create_unverified_https_context=ssl._create_unverified_context
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code "+str(rc))
-    client.subscribe("/esp8266/update")
+    client.subscribe("/esp8266/update")   #Topic subscribed to
 def on_message(client, userdata, message):
     temp=message.payload
-    data=json.loads(temp)
-    print(data)
+    data=json.loads(temp) 
+    print(data) #Print the received Json data in dictionary format
     x=data['temp']
     y=data['humidity']
     URL='https://api.thingspeak.com/update?api_key='
-    KEY='WGN65Q9L3UYZ6EOR'
+    KEY='WGN65Q9L3UYZ6EOR'  #Write API key
     HEADER='&field1={}&field2={}'.format(x,y)
     new_URL=URL+KEY+HEADER
     print(new_URL)
