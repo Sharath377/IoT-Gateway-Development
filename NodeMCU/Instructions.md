@@ -18,9 +18,9 @@ Then in Boards Select:
 You need to download the libraries from
 ### Sketch->Include libraries
 Download the following libraries:
-###### 1)ArduinoJson
-###### 2)ESP8266WiFi
-###### 3)PubSubClient
+1) ArduinoJson
+2) ESP8266WiFi
+3) PubSubClient
 
 # Setup Details
 1) Connect VCC of DHT11 to Vin of NodeMCU
