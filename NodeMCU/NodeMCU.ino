@@ -129,6 +129,6 @@ void loop() {
     Serial.print("\t Temperature: ");
     Serial.print(t);
     Serial.print(" *C ");
-     Serial.println("");
+    Serial.println("");
     }
   }
