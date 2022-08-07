@@ -21,3 +21,6 @@ Download the following libraries:
 ###### 1)ArduinoJson
 ###### 2)ESP8266WiFi
 ###### 3)PubSubClient
+
+# Setup Details
+
