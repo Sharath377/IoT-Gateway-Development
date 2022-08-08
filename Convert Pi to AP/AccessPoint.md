@@ -1,6 +1,6 @@
 # Setup a Wireless Access Point
 Open up the terminal in Pi and type the following commands:
-```
+``` 
 sudo apt-get update
 sudo apt-get upgrade
 ```
